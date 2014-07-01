@@ -1,5 +1,5 @@
 PHP_ARG_ENABLE(
-    hw,
+    hw, dnl module name
     whether to enable hello world support,
     [ --enable-hw Enable hello world support]
 )
