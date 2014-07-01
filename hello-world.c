@@ -6,6 +6,8 @@
 
 #include "hello-world.h"
 
+#include <speak_lib.h>
+
 /* function registration */
 static zend_function_entry hw_php_functions[] = {
     PHP_FE(hello_world, NULL) /* name from below */
@@ -34,5 +36,13 @@ ZEND_GET_MODULE(hw)
 
 PHP_FUNCTION(hello_world)
 {
-    printf("hello, world\n");
+    char *s;
+    int s_sz;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "s", &s, &s_sz) == FAILURE) {
+        RETURN_NULL();
+    }
+
+    espeak_Initialize(AUDIO_OUTPUT_SYNCH_PLAYBACK, 0, NULL, 0);
+    espeak_Synth(s, s_sz, 0, POS_CHARACTER, 0, 0, NULL, NULL);
 }
