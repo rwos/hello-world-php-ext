@@ -1,3 +1,3 @@
-RETURN_LONG(123);
-RETURN_STRING("hello", 1);
 RETURN_NULL();
+RETURN_LONG(1+2); /* careful! */
+RETURN_STRING("hello", 1);

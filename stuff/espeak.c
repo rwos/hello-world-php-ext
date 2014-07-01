@@ -1,3 +1,6 @@
+#include <speak_lib.h>
+
+
     char *s;
     int s_sz;
 
